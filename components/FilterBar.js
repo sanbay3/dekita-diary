@@ -4,8 +4,8 @@ import { CATEGORIES } from "@/lib/constants";
 function filterButtonClass(isActive) {
   return `rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
     isActive
-      ? "bg-sky-600 text-white"
-      : "bg-white text-zinc-600 hover:bg-zinc-100 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+      ? "bg-amber-600 text-white"
+      : "bg-white text-stone-600 hover:bg-stone-100 dark:bg-stone-800 dark:text-stone-300 dark:hover:bg-stone-700"
   }`;
 }
 
@@ -27,7 +27,7 @@ export default function FilterBar({
         value={keyword}
         onChange={(e) => onKeywordChange(e.target.value)}
         placeholder="キーワードで検索..."
-        className="w-full rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+        className="w-full rounded-xl border border-stone-300 bg-white px-4 py-2 text-sm text-stone-900 placeholder-stone-400 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-100"
       />
       <div className="flex flex-wrap justify-center gap-2">
         <button

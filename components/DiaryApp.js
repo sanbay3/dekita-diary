@@ -77,8 +77,8 @@ export default function DiaryApp() {
   ).length;
 
   return (
-    <div className="w-full max-w-2xl rounded-2xl bg-zinc-100 p-6 shadow-sm dark:bg-zinc-900 sm:p-8">
-      <h1 className="mb-6 text-center text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+    <div className="w-full max-w-2xl rounded-3xl bg-stone-100 p-6 shadow-sm dark:bg-stone-900 sm:p-8">
+      <h1 className="mb-6 text-center text-2xl font-bold text-stone-900 dark:text-stone-50">
         できたこと日記
       </h1>
 

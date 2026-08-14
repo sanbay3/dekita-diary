@@ -5,9 +5,9 @@ import { formatDateJa } from "@/lib/dateUtils";
 export default function DateGroup({ date, entries, onDelete }) {
   return (
     <div>
-      <h2 className="mb-2 flex items-baseline gap-2 text-sm font-semibold text-zinc-500 dark:text-zinc-400">
+      <h2 className="mb-2 flex items-baseline gap-2 text-sm font-semibold text-stone-500 dark:text-stone-400">
         {formatDateJa(date)}
-        <span className="text-xs font-normal text-zinc-400 dark:text-zinc-500">
+        <span className="text-xs font-normal text-stone-400 dark:text-stone-500">
           {entries.length}件
         </span>
       </h2>

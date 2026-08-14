@@ -6,7 +6,7 @@ import DateGroup from "./DateGroup";
 export default function EntryList({ groups, onDelete }) {
   if (groups.length === 0) {
     return (
-      <p className="py-8 text-center text-sm text-zinc-400 dark:text-zinc-500">
+      <p className="py-8 text-center text-sm text-stone-400 dark:text-stone-500">
         記録がありません
       </p>
     );
