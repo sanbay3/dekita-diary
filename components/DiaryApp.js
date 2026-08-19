@@ -5,8 +5,12 @@ import EntryForm from "@/components/EntryForm";
 import FilterBar from "@/components/FilterBar";
 import StatsPanel from "@/components/StatsPanel";
 import EntryList from "@/components/EntryList";
+import EncouragementBanner from "@/components/EncouragementBanner";
+import EchoCard from "@/components/EchoCard";
 import { filterEntries, groupByDate } from "@/lib/entryUtils";
 import { calcStreak, getThisMonthPrefix, getToday } from "@/lib/dateUtils";
+import { findEchoEntry } from "@/lib/echoUtils";
+import { buildEncouragementMessage } from "@/lib/messageUtils";
 
 // localStorageに保存する際のキー名。タイプミス防止のため定数化。
 const STORAGE_KEY = "dekita-diary:entries";
@@ -76,13 +80,25 @@ export default function DiaryApp() {
     entry.date.startsWith(getThisMonthPrefix())
   ).length;
 
+  // トップの声かけメッセージ（②）。累計件数・連続記録日数という
+  // マイナスにならない指標だけを使って組み立てる。詳細はlib/messageUtils.jsを参照。
+  const encouragementMessage = buildEncouragementMessage(entries, streak);
+
+  // 「1ヶ月前/1週間前の今日」の記録を1件思い出させるカード（①）。
+  // 該当する記録が無ければnullが返り、EchoCard側で非表示になる。
+  const echo = findEchoEntry(entries, getToday());
+
   return (
     <div className="w-full max-w-2xl rounded-3xl bg-stone-100 p-6 shadow-sm dark:bg-stone-900 sm:p-8">
       <h1 className="mb-6 text-center text-2xl font-bold text-stone-900 dark:text-stone-50">
         できたこと日記
       </h1>
 
+      <EncouragementBanner message={encouragementMessage} />
+
       <StatsPanel streak={streak} monthlyCount={monthlyCount} />
+
+      <EchoCard echo={echo} />
 
       <div className="mb-5">
         <EntryForm onAdd={addEntry} />
