@@ -27,6 +27,7 @@ export default function FilterBar({
         value={keyword}
         onChange={(e) => onKeywordChange(e.target.value)}
         placeholder="キーワードで検索..."
+        aria-label="キーワードで検索"
         className="w-full rounded-xl border border-stone-300 bg-white px-4 py-2 text-sm text-stone-900 placeholder-stone-400 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-100"
       />
       <div className="flex flex-wrap justify-center gap-2">

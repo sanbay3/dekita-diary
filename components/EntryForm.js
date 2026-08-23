@@ -28,6 +28,7 @@ export default function EntryForm({ onAdd }) {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="今日できたことを入力..."
+        aria-label="できたこと"
         className="flex-1 rounded-xl border border-stone-300 bg-white px-4 py-2 text-sm text-stone-900 placeholder-stone-400 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-100"
       />
       <select
