@@ -68,6 +68,16 @@ export default function DiaryApp() {
     setEntries((prev) => prev.filter((entry) => entry.id !== id));
   };
 
+  // 記録の本文・カテゴリーを書き換える。日付は変更しない
+  // （「いつ記録したか」は編集の対象外という判断）。
+  const editEntry = (id, newText, newCategory) => {
+    setEntries((prev) =>
+      prev.map((entry) =>
+        entry.id === id ? { ...entry, text: newText, category: newCategory } : entry
+      )
+    );
+  };
+
   // 検索・フィルター条件に合う記録だけを抜き出し、日付ごとにグループ化する。
   // 詳しいロジックは lib/entryUtils.js を参照。
   const filteredEntries = filterEntries(entries, { keyword, category });
@@ -112,7 +122,7 @@ export default function DiaryApp() {
       />
 
       <div className="mt-5">
-        <EntryList groups={groupedEntries} onDelete={deleteEntry} />
+        <EntryList groups={groupedEntries} onDelete={deleteEntry} onEdit={editEntry} />
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import EntryItem from "./EntryItem";
 import { formatDateJa } from "@/lib/dateUtils";
 
 // 1つの日付分の記録をまとめる「見出し + リスト」
-export default function DateGroup({ date, entries, onDelete }) {
+export default function DateGroup({ date, entries, onDelete, onEdit }) {
   return (
     <div>
       <h2 className="mb-2 flex items-baseline gap-2 text-sm font-semibold text-stone-500 dark:text-stone-400">
@@ -13,7 +13,7 @@ export default function DateGroup({ date, entries, onDelete }) {
       </h2>
       <ul className="flex flex-col gap-2">
         {entries.map((entry) => (
-          <EntryItem key={entry.id} entry={entry} onDelete={onDelete} />
+          <EntryItem key={entry.id} entry={entry} onDelete={onDelete} onEdit={onEdit} />
         ))}
       </ul>
     </div>
