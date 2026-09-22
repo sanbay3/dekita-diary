@@ -48,15 +48,16 @@ export default function DiaryApp() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
   }, [entries]);
 
-  // 記録を追加する
-  const addEntry = (text, newCategory) => {
+  // 記録を追加する。dateは省略した場合のみ「今日」を使う
+  // （EntryForm側で日付入力を持たせ、過去日をさかのぼって記録できるようにしたため）。
+  const addEntry = (text, newCategory, date = getToday()) => {
     const newEntry = {
       // Date.now()は同じミリ秒内に連続追加すると重複する可能性があるため、
       // 常に一意な値を作れるcrypto.randomUUID()を使う（5月のタスク管理アプリのノウハウ）。
       id: crypto.randomUUID(),
       text,
       category: newCategory,
-      date: getToday(),
+      date,
     };
     // setEntries(prev => ...) の形（関数を渡す形）を使うと、
     // 常に「直前の最新のentries」を元に新しい配列を作れるので安全。
